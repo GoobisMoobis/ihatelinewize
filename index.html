@@ -17,6 +17,22 @@
             margin: 0;
             padding: 0;
         }
+        ul,
+        ol {
+          list-style-type: none; /* No bullets or numbers */
+          padding: 0;
+          margin: 0;
+        }
+        button {
+            display: inline-block; /* Makes the link behave like a button */
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none; /* Removes underline */
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
         .menu-overlay {
             display: none;
             position: fixed;
@@ -71,8 +87,9 @@
     <sub id="commit-date">Loading...</sub>
     <p>A very simple list of different proxies that LineWize seems to be oblivious to</p>
       <h2>Links:</h2>
+    <ul>
       <button id="https://speedy.ax1951.com/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
-
+    </ul>
     <div class="menu-overlay" id="menuOverlay">
         <div class="menu">
             <button class="close" onclick="closeMenu()">&times;</button>
