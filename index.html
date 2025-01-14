@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LineWize Sucks frfr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>LineWize Bypass Links</h1>
+    <sub>Last Update:</sub>
+    <sub id="commit-date">Loading...</sub>
+    <p>A very simple list of different proxies that LineWize seems to be oblivious to</p>
+      <h2>Links:</h2>
+      <p> Nothing available right now :( </p>
+    <script>
+        const manualOverride = true; // Set to true to override the date manually.
+        const overrideDate = "September 2, 2025 at 3:10 PM"; // Manually set date.
+
+        async function getLastCommitDate(owner, repo) {
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits`;
+
+            if (manualOverride) {
+                document.getElementById('commit-date').textContent = `Last Update: ${overrideDate}`;
+                return;
+            }
+
+            try {
+                const response = await fetch(apiUrl, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API responded with status ${response.status}`);
+                }
+
+                const commits = await response.json();
+                const lastCommitDate = new Date(commits[0].commit.author.date);
+
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                };
+
+                document.getElementById('commit-date').textContent = `Last Update: ${lastCommitDate.toLocaleDateString(undefined, options)}`;
+            } catch (error) {
+                document.getElementById('commit-date').textContent = `Error fetching commit date: ${error.message}`;
+            }
+        }
+
+        getLastCommitDate('GoobisMoobis', 'ihatelinewize');
+    </script>
+      <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    // Function to display a notification
+    function displayNotification() {
+        if (Notification.permission === 'granted') {
+            new Notification("Go to settings and turn on advanced about:blank cloaking!");
+        } else {
+            console.log("Notification permission not granted.");
+        }
+    }
+
+    // Request notification permission and display explanation overlay
+    function requestNotificationPermission() {
+        if (Notification.permission === 'default') {
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.color = 'white';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '1000';
+
+            const message = document.createElement('p');
+            message.textContent = "Sometimes I might need to instruct you on something to do to make one of the proxies work better. Please enable notifications!";
+            message.style.textAlign = 'center';
+            message.style.margin = '20px';
+            message.style.fontSize = '18px';
+
+            const button = document.createElement('button');
+            button.textContent = "Okay, Got it!";
+            button.style.padding = '10px 20px';
+            button.style.fontSize = '16px';
+            button.style.cursor = 'pointer';
+            button.addEventListener('click', () => {
+                overlay.remove();
+                Notification.requestPermission();
+            });
+
+            overlay.appendChild(message);
+            overlay.appendChild(button);
+            document.body.appendChild(overlay);
+        }
+    }
+
+    // Detect click on elements with the "doge-unblocker" class
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('doge-unblocker')) {
+            displayNotification();
+        }
+    });
+
+    // Request notification access when the page loads
+    requestNotificationPermission();
+});
+    </script>
+</body>
+</html>
