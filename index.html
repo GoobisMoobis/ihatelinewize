@@ -11,6 +11,59 @@
             margin-top: 50px;
         }
     </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .menu p {
+            margin: 20px 0;
+        }
+        .menu a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .menu a:hover {
+            background: #0056b3;
+        }
+        .menu .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>LineWize Bypass Links</h1>
@@ -18,7 +71,39 @@
     <sub id="commit-date">Loading...</sub>
     <p>A very simple list of different proxies that LineWize seems to be oblivious to</p>
       <h2>Links:</h2>
-      <p> Nothing available right now :( </p>
+      <button id="https://speedy.ax1951.com/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu">
+            <button class="close" onclick="closeMenu()">&times;</button>
+            <p>Once you open the proxy, go to Settings and enable Advanced About:Blank Cloning.</p>
+            <a id="menuLink" href="#" target="_blank">Go to Website</a>
+        </div>
+    </div>
+
+    <sub>Want to contribue? Go to this projects <a href="https://github.com/GoobisMoobis/ihatelinewize">repository on GitHub</a></sub>
+    <script>
+        function openMenu(buttonId) {
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuLink = document.getElementById('menuLink');
+
+            menuLink.href = buttonId;
+            menuOverlay.style.display = 'flex';
+
+            // Close menu on Escape key press
+            document.addEventListener('keydown', function escListener(event) {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                    document.removeEventListener('keydown', escListener);
+                }
+            });
+        }
+
+        function closeMenu() {
+            const menuOverlay = document.getElementById('menuOverlay');
+            menuOverlay.style.display = 'none';
+        }
+    </script>
     <script>
         const manualOverride = false; // Set to true to override the date manually.
         const overrideDate = "September 2, 2025 at 3:10 PM"; // Manually set date.
@@ -58,67 +143,6 @@
         }
 
         getLastCommitDate('GoobisMoobis', 'ihatelinewize');
-    </script>
-      <script>
-      document.addEventListener('DOMContentLoaded', () => {
-    // Function to display a notification
-    function displayNotification() {
-        if (Notification.permission === 'granted') {
-            new Notification("Go to settings and turn on advanced about:blank cloaking!");
-        } else {
-            console.log("Notification permission not granted.");
-        }
-    }
-
-    // Request notification permission and display explanation overlay
-    function requestNotificationPermission() {
-        if (Notification.permission === 'default') {
-            const overlay = document.createElement('div');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            overlay.style.color = 'white';
-            overlay.style.display = 'flex';
-            overlay.style.flexDirection = 'column';
-            overlay.style.justifyContent = 'center';
-            overlay.style.alignItems = 'center';
-            overlay.style.zIndex = '1000';
-
-            const message = document.createElement('p');
-            message.textContent = "Sometimes I might need to instruct you on something to do to make one of the proxies work better. Please enable notifications!";
-            message.style.textAlign = 'center';
-            message.style.margin = '20px';
-            message.style.fontSize = '18px';
-
-            const button = document.createElement('button');
-            button.textContent = "Okay, Got it!";
-            button.style.padding = '10px 20px';
-            button.style.fontSize = '16px';
-            button.style.cursor = 'pointer';
-            button.addEventListener('click', () => {
-                overlay.remove();
-                Notification.requestPermission();
-            });
-
-            overlay.appendChild(message);
-            overlay.appendChild(button);
-            document.body.appendChild(overlay);
-        }
-    }
-
-    // Detect click on elements with the "doge-unblocker" class
-    document.addEventListener('click', (event) => {
-        if (event.target.classList.contains('doge-unblocker')) {
-            displayNotification();
-        }
-    });
-
-    // Request notification access when the page loads
-    requestNotificationPermission();
-});
     </script>
 </body>
 </html>
