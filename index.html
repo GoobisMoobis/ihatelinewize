@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,22 +18,29 @@
             margin: 0;
             padding: 0;
         }
+
         ul,
         ol {
-          list-style-type: none; /* No bullets or numbers */
-          padding: 0;
-          margin: 0;
+            list-style-type: none;
+            /* No bullets or numbers */
+            padding: 0;
+            margin: 0;
         }
+
         button {
-            display: inline-block; /* Makes the link behave like a button */
+            display: inline-block;
+            /* Makes the link behave like a button */
             background-color: #007bff;
             color: #fff;
             padding: 10px 20px;
-            text-decoration: none; /* Removes underline */
+            text-decoration: none;
+            /* Removes underline */
             border-radius: 5px;
             font-size: 16px;
-            transition: background-color 0.3s ease; /* Smooth hover effect */
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
         }
+
         .menu-overlay {
             display: none;
             position: fixed;
@@ -45,6 +53,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .menu {
             background: #fff;
             padding: 20px;
@@ -55,9 +64,11 @@
             max-width: 400px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
         .menu p {
             margin: 20px 0;
         }
+
         .menu a {
             display: inline-block;
             padding: 10px 20px;
@@ -67,9 +78,21 @@
             border-radius: 5px;
             margin-top: 10px;
         }
+
         .menu a:hover {
             background: #0056b3;
         }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
         .menu .close {
             position: absolute;
             top: 10px;
@@ -80,16 +103,85 @@
             cursor: pointer;
         }
     </style>
+    <style>
+        /* Basic styles for the tab system */
+
+        .tab-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button:hover {
+            background-color: #ddd;
+        }
+
+        .tab-button.active {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>LineWize Bypass Links</h1>
+    <h1>LineWize Bypasses</h1>
     <sub>Last Update:</sub>
     <sub id="commit-date">Loading...</sub>
-    <p>A very simple list of different proxies that LineWize seems to be oblivious to</p>
-      <h2>Links:</h2>
-    <ul>
-      <button id="https://speedy.ax1951.com/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
-    </ul>
+    <br>
+    <sub>Want to contribue? Go to this project's <a href="https://github.com/GoobisMoobis/ihatelinewize">repository on GitHub</a></sub>
+    <h2>Bypasses:</h2>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button" onclick="openTab(event, 'Tab1')">Proxies</button>
+            <button class="tab-button" onclick="openTab(event, 'Tab2')">Get RID of LineWize</button>
+            <button class="tab-button" onclick="openTab(event, 'Tab3')">Advanced</button>
+        </div>
+        <div class="tab-content" id="Tab1">
+            <h3>A very simple list of different proxies that LineWize seems to be oblivious to</h3>
+            <h2>Links:</h2>
+            <sub>Make a comment on the <a href="https://github.com/GoobisMoobis/ihatelinewize/issues">issues page of the GitHub repository</a> if a link stops working</sub>
+            <br><br>
+            <ul>
+                <button id="https://speedy.ax1951.com/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
+            </ul>
+        </div>
+        <div class="tab-content" id="Tab2">
+            <h3>Ways to get rid of LineWize</h3>
+            <a class="button" href="/ihatelinewize/corkey.html">Corkey</a>
+        </div>
+        <div class="tab-content" id="Tab3">
+            <h3>Advanced</h3>
+            <p>This is the content of Tab 3.</p>
+        </div>
+    </div>
+
+
+
     <div class="menu-overlay" id="menuOverlay">
         <div class="menu">
             <button class="close" onclick="closeMenu()" style="color: red;">&times;</button>
@@ -98,7 +190,6 @@
         </div>
     </div>
 
-    <sub>Want to contribue? Go to this projects <a href="https://github.com/GoobisMoobis/ihatelinewize">repository on GitHub</a></sub>
     <script>
         function openMenu(buttonId) {
             const menuOverlay = document.getElementById('menuOverlay');
@@ -135,7 +226,9 @@
 
             try {
                 const response = await fetch(apiUrl, {
-                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
                 });
 
                 if (!response.ok) {
@@ -161,5 +254,30 @@
 
         getLastCommitDate('GoobisMoobis', 'ihatelinewize');
     </script>
+    <script>
+        function openTab(evt, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+
+            // Get all elements with class="tab-button" and remove the class "active"
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Set the default tab to open
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tab-button").click();
+        });
+    </script>
 </body>
+
 </html>
