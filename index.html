@@ -188,7 +188,7 @@
             <p>This means not only will the tab be hidden as a blank tab, but it will also NOT show in your history.</p>
             <p>To do this, go to the settings and enable ADVANCED about:blank cloaking.</p>
             <sub>You can also explore some other settings while you're there!</sub>
-            <a id="menuLink" href="#" target="_blank">Go to Website</a>
+            <button id="menuLink">Go to Website</button>
         </div>
     </div>
 
@@ -197,7 +197,10 @@
             const menuOverlay = document.getElementById('menuOverlay');
             const menuLink = document.getElementById('menuLink');
 
-            menuLink.href = buttonId;
+            menuLink.onclick = function openDogeU() {
+                window.open(url, buttonId).focus();
+                sendNotification("Alert!")
+            }
             menuOverlay.style.display = 'flex';
 
             // Close menu on Escape key press
@@ -257,6 +260,40 @@
         getLastCommitDate('GoobisMoobis', 'ihatelinewize');
     </script>
     <script>
+        function sendNotification(title, body) {
+            // Check if the browser supports notifications
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notifications.");
+                return;
+            }
+
+            // Request permission from the user
+            if (Notification.permission === "default") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        createNotification(title, body);
+                    } else {
+                        alert("Notification permission denied!");
+                    }
+                });
+            } else if (Notification.permission === "granted") {
+                createNotification(title, body);
+            } else {
+                alert("You have denied notifications. Please enable them in your browser settings.");
+            }
+        }
+
+        // Function to create and display a notification
+        function createNotification(title, body) {
+            const options = {
+                body: body,
+                icon: "https://via.placeholder.com/100", // URL to an icon
+                requireInteraction: false, // Stays until user interacts (if true)
+            };
+
+            const notification = new Notification(title, options);
+        }
+        
         function openTab(evt, tabName) {
             // Get all elements with class="tab-content" and hide them
             var tabContents = document.getElementsByClassName("tab-content");
