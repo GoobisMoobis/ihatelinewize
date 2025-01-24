@@ -8,32 +8,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
         ul,
         ol {
             list-style-type: none;
+            /* No bullets or numbers */
             padding: 0;
             margin: 0;
         }
 
         button {
             display: inline-block;
+            /* Makes the link behave like a button */
             background-color: #007bff;
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
+            /* Removes underline */
             border-radius: 5px;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            border: none;
-        }
-
-        button:hover {
-            background: #0056b3;
+            /* Smooth hover effect */
         }
 
         .menu-overlay {
@@ -64,6 +69,30 @@
             margin: 20px 0;
         }
 
+        .menu a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .menu a:hover {
+            background: #0056b3;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
         .menu .close {
             position: absolute;
             top: 10px;
@@ -72,8 +101,8 @@
             border: none;
             font-size: 18px;
             cursor: pointer;
-            color: red;
         }
+        /* Basic styles for the tab system */
 
         .tab-container {
             width: 100%;
@@ -122,162 +151,134 @@
     <sub>Last Update:</sub>
     <sub id="commit-date">Loading...</sub>
     <br>
-    <sub>Want to contribute? Go to this project's <a href="https://github.com/GoobisMoobis/ihatelinewize">repository on GitHub</a></sub>
+    <sub>Want to contribue? Go to this project's <a href="https://github.com/GoobisMoobis/ihatelinewize">repository on GitHub</a></sub>
     <h2>Bypasses:</h2>
-
     <div class="tab-container">
         <div class="tabs">
             <button class="tab-button" onclick="openTab(event, 'Tab1')">Proxies</button>
             <button class="tab-button" onclick="openTab(event, 'Tab2')">Get RID of LineWize</button>
             <button class="tab-button" onclick="openTab(event, 'Tab3')">Advanced</button>
         </div>
-
         <div class="tab-content" id="Tab1">
             <h3>A very simple list of different proxies that LineWize seems to be oblivious to</h3>
             <h2>Links:</h2>
             <sub>Make a comment on the <a href="https://github.com/GoobisMoobis/ihatelinewize/issues">issues page of the GitHub repository</a> if a link stops working</sub>
             <br><br>
-            <button id="https://trains.fenac.nl/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
+            <ul>
+                <button id="https://trains.fenac.nl/" onclick="openMenu(this.id)">Doge Unblocker Link 1</button>
+            </ul>
         </div>
-
         <div class="tab-content" id="Tab2">
             <h3>Ways to get rid of LineWize</h3>
             <a class="button" href="/ihatelinewize/corkey.html">Corkey</a>
         </div>
-
         <div class="tab-content" id="Tab3">
             <h3>Advanced</h3>
             <a class="button" href="/ihatelinewize/br1ck.html">Br1ck (Un-enrolls your Chromebook. It will no longer be managed by the school district.)</a>
         </div>
     </div>
 
+
+
     <div class="menu-overlay" id="menuOverlay">
         <div class="menu">
-            <button class="close" onclick="closeMenu()">&times;</button>
-            <p>This is a Doge Unblocker proxy link.</p>
-            <p>Doge Unblocker proxies are very good proxies because they support tab cloaking and history cloaking.</p>
+            <button class="close" onclick="closeMenu()" style="color: red;">&times;</button>
+            <p>This is a Doge Unblocker proxy link.</p> <br>
+            <p>Doge Unblocker proxies are very good proxies because they support tab cloaking and history cloaking</p>
             <p>This means not only will the tab be hidden as a blank tab, but it will also NOT show in your history.</p>
             <p>To do this, go to the settings and enable ADVANCED about:blank cloaking.</p>
             <sub>You can also explore some other settings while you're there!</sub>
-            <button id="menuLink">Go to Website</button>
+            <a id="menuLink" href="#" target="_blank">Go to Website</a>
         </div>
     </div>
 
     <script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Set the default tab
-    document.querySelector(".tab-button").click();
+        function openMenu(buttonId) {
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuLink = document.getElementById('menuLink');
 
-    // Load last GitHub commit date
-    getLastCommitDate('GoobisMoobis', 'ihatelinewize');
-});
+            menuLink.href = buttonId;
+            menuOverlay.style.display = 'flex';
 
-function openTab(evt, tabName) {
-    // Hide all tab contents
-    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
-
-    // Deactivate all tab buttons
-    document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
-
-    // Show selected tab content
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-}
-
-function openMenu(buttonId) {
-    const menuOverlay = document.getElementById("menuOverlay");
-    const menuLink = document.getElementById("menuLink");
-
-    // Direct link to the URL
-    menuLink.onclick = () => window.open(buttonId, "_blank");
-
-    menuOverlay.style.display = "flex";
-
-    // Close menu with Escape key
-    const escListener = event => {
-        if (event.key === "Escape") {
-            closeMenu();
-            document.removeEventListener("keydown", escListener);
-        }
-    };
-
-    document.addEventListener("keydown", escListener);
-}
-
-function closeMenu() {
-    document.getElementById("menuOverlay").style.display = "none";
-}
-
-async function getLastCommitDate(owner, repo) {
-    try {
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
-        if (!response.ok) throw new Error(`GitHub API responded with status ${response.status}`);
-
-        const commits = await response.json();
-        const lastCommitDate = new Date(commits[0].commit.author.date);
-        document.getElementById("commit-date").textContent = `Last Update: ${lastCommitDate.toLocaleString()}`;
-    } catch (error) {
-        document.getElementById("commit-date").textContent = `Error fetching commit date: ${error.message}`;
-    }
-}on ID URL
-            menuLink.onclick = () => {
-                window.open(buttonId, "_blank").focus();
-                sendNotification(
-                    "Alert!",
-                    "This is a special message from Fender: My new chat website is up! Visit https://goobischat.glitch.me to talk to me about anything you suggest for the LineWize website."
-                );
-            };
-
-            menuOverlay.style.display = "flex";
-
-            // Close menu with Escape key
-            const escListener = event => {
-                if (event.key === "Escape") {
+            // Close menu on Escape key press
+            document.addEventListener('keydown', function escListener(event) {
+                if (event.key === 'Escape') {
                     closeMenu();
-                    document.removeEventListener("keydown", escListener);
+                    document.removeEventListener('keydown', escListener);
                 }
-            };
-
-            document.addEventListener("keydown", escListener);
+            });
         }
 
         function closeMenu() {
-            document.getElementById("menuOverlay").style.display = "none";
+            const menuOverlay = document.getElementById('menuOverlay');
+            menuOverlay.style.display = 'none';
         }
+    </script>
+    <script>
+        const manualOverride = false; // Set to true to override the date manually.
+        const overrideDate = "September 2, 2025 at 3:10 PM"; // Manually set date.
 
-        function sendNotification(title, body) {
-            if (!("Notification" in window)) {
-                alert("This browser does not support desktop notifications.");
+        async function getLastCommitDate(owner, repo) {
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/commits`;
+
+            if (manualOverride) {
+                document.getElementById('commit-date').textContent = `Last Update: ${overrideDate}`;
                 return;
             }
 
-            if (Notification.permission === "default") {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") createNotification(title, body);
-                });
-            } else if (Notification.permission === "granted") {
-                createNotification(title, body);
-            } else {
-                alert("You have denied notifications. Enable them in browser settings.");
-            }
-        }
-
-        function createNotification(title, body) {
-            new Notification(title, { body, icon: "https://via.placeholder.com/100" });
-        }
-
-        async function getLastCommitDate(owner, repo) {
             try {
-                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
-                if (!response.ok) throw new Error(`GitHub API responded with status ${response.status}`);
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API responded with status ${response.status}`);
+                }
 
                 const commits = await response.json();
                 const lastCommitDate = new Date(commits[0].commit.author.date);
-                document.getElementById("commit-date").textContent = `Last Update: ${lastCommitDate.toLocaleString()}`;
+
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                };
+
+                document.getElementById('commit-date').textContent = `Last Update: ${lastCommitDate.toLocaleDateString(undefined, options)}`;
             } catch (error) {
-                document.getElementById("commit-date").textContent = `Error fetching commit date: ${error.message}`;
+                document.getElementById('commit-date').textContent = `Error fetching commit date: ${error.message}`;
             }
         }
+
+        getLastCommitDate('GoobisMoobis', 'ihatelinewize');
+    </script>
+    <script>
+        function openTab(evt, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+
+            // Get all elements with class="tab-button" and remove the class "active"
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Set the default tab to open
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tab-button").click();
+        });
     </script>
 </body>
 
