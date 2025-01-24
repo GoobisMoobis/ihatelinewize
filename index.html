@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LineWize Sucks frfr</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+    <script>
+        try {
+            Notification.requestPermission()
+              .then((permission) => {
+                 console.log(`Notification permission: ${permission}`);
+            })
+            .catch((error) => {
+              console.error("Error while requesting notification permission:", error);
+            });
+        } catch (error) {
+             console.error("Unexpected error occurred:", error);
         }
-    </style>
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,16 +35,17 @@
 
         button {
             display: inline-block;
-            /* Makes the link behave like a button */
             background-color: #007bff;
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
-            /* Removes underline */
             border-radius: 5px;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            /* Smooth hover effect */
+        }
+        
+        button:hover {
+            background: #0056b3;
         }
 
         .menu-overlay {
@@ -199,7 +206,7 @@
 
             menuLink.onclick = function openDogeU() {
                 window.open(url, buttonId).focus();
-                sendNotification("Alert!")
+                sendNotification("Alert!", "This is a special message from Fender: My new chat website is up! Visit https://goobischat.glitch.me to talk to me about anything you suggest for the linewize website, etc.")
             }
             menuOverlay.style.display = 'flex';
 
@@ -273,7 +280,7 @@
                     if (permission === "granted") {
                         createNotification(title, body);
                     } else {
-                        alert("Notification permission denied!");
+                        alert("Notification permission denied! Please go to your settings and allow notifications");
                     }
                 });
             } else if (Notification.permission === "granted") {
