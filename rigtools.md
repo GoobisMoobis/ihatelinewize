@@ -11,7 +11,9 @@
 - `devtools://devtools/bundled/devtools_app.html?experiments=true&wss=rig.ccsd.store`
 - `devtools://devtools/bundled/devtools_app.html?experiments=true&ws=sincereham222.cc:8080`
 - `devtools://devtools/bundled/devtools_app.html?experiments=true&wss=rwpk9g-8080.csb.app` (updated UI)
+
 ***Note**: For links with the updated UI, only go to step 4 bc the rest is self-explanatory. Also, the images are not relevant for the updated UI.*
+
 **WARNING:** Links may sometimes be down. If so, try a different one.
 
 ### Instructions:
@@ -27,4 +29,4 @@
 https://github.com/FWSmasher/rigtools
 
 ### Images:
-https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518
+![img](https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518)
