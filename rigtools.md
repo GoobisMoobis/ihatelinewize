@@ -26,7 +26,7 @@
 ***Note**: After using rigtools, the chrome.management page will always be located at `filesystem:chrome-extension://ext-id/temporary/index.html`. It is recommended to bookmark this page as it persists after shutdown and is only overwritten by using rigtools again*
 
 ### Repo:
-https://github.com/FWSmasher/rigtools
+[https://github.com/FWSmasher/rigtools](https://github.com/FWSmasher/rigtools)
 
 ### Images:
-![img](https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518)
+[![https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518](https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518)](https://media.discordapp.net/attachments/1286032980913033226/1308073644974411787/Screenshot_2024-11-09_11.57.13.png?ex=673d46c3&is=673bf543&hm=115ca64a72e8c3b2ab6265386546c18db8cbf35fb0ce7828893e6f71c6cdf63c&=&format=webp&quality=lossless&width=1200&height=518)
