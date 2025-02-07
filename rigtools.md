@@ -1,5 +1,11 @@
 # How to use RigTools (UPDATED)
 
+## What is RigTools?
+
+RigTools is an exploit that allows you to do Extension/Devtools code execution.
+
+It can be used for many things, and is very worth it.
+
 ### Requirements:
 - A brain
 - A Chromebook on 128 or below
@@ -26,4 +32,4 @@
 ***Note**: After using rigtools, the chrome.management page will always be located at `filesystem:chrome-extension://ext-id/temporary/index.html`. It is recommended to bookmark this page as it persists after shutdown and is only overwritten by using rigtools again*
 
 ### Repo:
-[https://github.com/FWSmasher/rigtools](https://github.com/FWSmasher/rigtools)
+[https://github.com/FWSmasher/rigtools](https://github.com/MunyDev/rigtools-v2)
