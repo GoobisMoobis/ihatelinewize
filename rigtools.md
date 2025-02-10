@@ -29,7 +29,6 @@ It can be used for many things, and is very worth it.
 4. Click the extension id button and paste in your blocking extension's id (it has to be installed by administrator and it has to have the ability to manage other extensions)
 5. Click the fifth button (P5) to kill the current extension or click the third button (P3) and paste in the specific extension's id u want to kill (image below)
 
->[!NOTE]
 > After using rigtools, the chrome.management page will always be located at `filesystem:chrome-extension://ext-id/temporary/index.html`. It is recommended to bookmark this page as it persists after shutdown and is only overwritten by using rigtools again*
 
 ### Repo:
