@@ -323,42 +323,12 @@
     </script>
     <script>
         function openExtRemover() {
-    let baseUrl = "https://for-da-boiz.vercel.app/";
-    let endpoint = "assignments/hvtrs8%2F-ezt%2Frgmmvgr%2Cngt-ildgx%2Chvmn";
-    
-    let newTab = window.open("about:blank", "_blank");
-    
-    if (newTab) {
-        newTab.document.write(`
-            <html>
-            <head>
-                <title>Custom Tab Title</title>
-                <link rel="icon" type="image/png" href="https://your-icon-url.com/favicon.png">
-                <style>
-                    html, body {
-                        margin: 0;
-                        padding: 0;
-                        height: 100%;
-                        overflow: hidden;
-                    }
-                    iframe {
-                        width: 100vw;
-                        height: 100vh;
-                        border: none;
-                    }
-                </style>
-            </head>
-            <body>
-                <iframe src="${baseUrl}${endpoint}" sandbox="allow-scripts allow-same-origin"></iframe>
-            </body>
-            </html>
-        `);
-        newTab.document.close();
-    } else {
-        alert("Popup blocked! Allow popups for this site.");
-    }
-});
-
+            let baseUrl = "https://for-da-boiz.vercel.app/";
+            let endpoint = "assignments/hvtrs8%2F-ezt%2Frgmmvgr%2Cngt-ildgx%2Chvmn";
+        
+            window.location.href = "${baseUrl}${endpoint}"
+       
+        )
     </script>
 </body>
 
