@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe with Dynamic URL and Mask</title>
+
+    <!-- Default Favicon -->
+    <link id="favicon" rel="icon" href="https://www.example.com/favicon.ico">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #iframe-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #options {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+        #mask {
+            margin-left: 20px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Iframe with Dynamic URL and Mask Options</h1>
+
+    <div id="options">
+        <label for="mask">Choose Mask: </label>
+        <select id="mask">
+            <option value="default">Default</option>
+            <option value="mask1">Mask 1</option>
+            <option value="mask2">Mask 2</option>
+        </select>
+
+        <button id="fullscreen-btn">Go Fullscreen</button>
+    </div>
+
+    <!-- Iframe Container -->
+    <div id="iframe-container">
+        <iframe id="iframe" src="" title="Iframe"></iframe>
+    </div>
+
+    <script>
+        // URL for the iframe
+        const url = "https://example.com"; // Set the URL here
+
+        // Set the iframe source to the URL
+        const iframe = document.getElementById('iframe');
+        iframe.src = url;
+
+        // Mask change functionality
+        const maskSelect = document.getElementById('mask');
+        const favicon = document.getElementById('favicon');
+        const title = document.title;
+
+        maskSelect.addEventListener('change', (e) => {
+            const selectedMask = e.target.value;
+            switch (selectedMask) {
+                case 'default':
+                    document.title = title;
+                    favicon.href = "https://www.example.com/favicon.ico";
+                    break;
+                case 'mask1':
+                    document.title = "Special Mask 1";
+                    favicon.href = "https://www.example.com/favicon-mask1.ico"; // Change to the icon for Mask 1
+                    break;
+                case 'mask2':
+                    document.title = "Special Mask 2";
+                    favicon.href = "https://www.example.com/favicon-mask2.ico"; // Change to the icon for Mask 2
+                    break;
+                default:
+                    document.title = title;
+                    favicon.href = "https://www.example.com/favicon.ico";
+                    break;
+            }
+        });
+
+        // Fullscreen functionality
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        fullscreenBtn.addEventListener('click', () => {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        });
+    </script>
+
+</body>
+</html>
